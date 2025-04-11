@@ -5,22 +5,18 @@ const tBodyRows = document.querySelectorAll('tbody tr');
 
 Array.from(tHeadRows).forEach((item) => {
   const cells = Array.from(item.cells);
+  const newEL = document.createElement('th');
 
-  cells.splice(cells.length - 1, 0, cells[1]);
-  item.innerHTML = '';
+  newEL.textContent = cells[1].textContent;
 
-  for (let i = 0; i < cells.length; i++) {
-    item.innerHTML += `<th>${cells[i].textContent}</th>`;
-  }
+  item.insertBefore(newEL, item.cells[cells.length - 1]);
 });
 
 Array.from(tBodyRows).forEach((item) => {
   const cells = Array.from(item.cells);
+  const newEL = document.createElement('td');
 
-  cells.splice(cells.length - 1, 0, cells[1]);
-  item.innerHTML = '';
+  newEL.textContent = cells[1].textContent;
 
-  for (let i = 0; i < cells.length; i++) {
-    item.innerHTML += `<td>${cells[i].textContent}</td>`;
-  }
+  item.insertBefore(newEL, item.cells[cells.length - 1]);
 });
